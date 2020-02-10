@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule,NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -39,6 +39,7 @@ const appRoutes: Routes = [
     HomepageComponent,
     Form1Component,
     
+    
   ],
   imports: [
     RouterModule.forRoot(
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     NgbAlertModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
- 	  AngularFirestoreModule,
+     AngularFirestoreModule,
+     ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

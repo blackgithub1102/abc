@@ -12,6 +12,41 @@
     <!-- End of tabbar -->
 
     <!-- Content -->
+    <form>
+      <div class="form-group form-inline">
+          Full text search: <input [formControl]="filter">
+      </div>
+    </form>
+
+    <div>
+      <div class="row">
+        <div class="col-2">Search</div>
+        <div class="col-5">
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-5">
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Vui lòng chọn</option>
+            <option value="Tiền mặt">Ngay goi</option>
+            <option value="Chuyển khoản">Nguoi goi</option>
+            <option value="Khác">Hinh thuc thanh toan</option>
+          </select> 
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">Search</div>
+      <div class="col-5"><input type="text" class="form-control"></div>
+      <div class="row-col-3">
+        <input type="checkbox" name="vehicle1" value="Bike">
+        <label for="vehicle1">Ngay tao</label>
+        <input type="checkbox" name="vehicle1" value="Bike">
+        <label for="vehicle1">Ngay tao</label>
+        <input type="checkbox" name="vehicle1" value="Bike">
+        <label for="vehicle1">Ngay tao</label>
+      </div>
+    </div>
 
     <table class="table table-striped">
         <thead>
@@ -30,16 +65,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of items; index as i">
-          <th scope="row"></th>
-          <td>{{ item.ngaytao}}</td>
+        <tr *ngFor="let item of items ; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td><ngb-highlight [result]="item.ngaytao" [term]="filter.value"></ngb-highlight></td>
           <td>{{ item.nguoitao}}</td>
           <td>{{ item.hinhthucthanhtoan}}</td>
           <td>{{ item.bennhan}}</td>
           <td>{{ item.donvipheduyet}}</td>
           <td>{{ item.kyngansach}}</td>
           <td>{{ item.tucachphapnhan}}</td>
-          <td></td>
+          <td>{{ item.thoihanthanhtoan}}</td>
           <td>{{ item.ghichu}}</td>
           <td>{{ item.ccmail }}</td>
         </tr>
