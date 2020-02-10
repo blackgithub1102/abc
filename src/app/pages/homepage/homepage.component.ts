@@ -1,13 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform } from '@angular/core';
 import * as firebase from 'firebase';
+import { DecimalPipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+
+interface Records {
+  ngaytao: string;
+  nguoitao: string;
+  hinhthucthanhtoan: string;
+}
+
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
+  providers: [DecimalPipe]
 })
 export class HomepageComponent implements OnInit {
   items = Array();
-  constructor() { 
+  countries$: Observable<Records[]>;
+  filter = new FormControl('');
+
+  constructor(pipe: DecimalPipe) { 
     firebase.firestore()
     .collection('form')
     .get()
@@ -30,12 +46,24 @@ export class HomepageComponent implements OnInit {
   .catch((err) => {
     console.log('Error getting documents', err);
   });
+
+  this.countries$ = this.filter.valueChanges.pipe(
+    startWith(''),
+    map(text => this.onSearch(text, pipe))
+    );
   }
 
   ngOnInit() {
     
   }
 
-  
+  onSearch(text: string, pipe: PipeTransform): Records[] {
+    return this.items.filter(record => {
+      const term = text.toLowerCase();
+      return record.ngaytao.toLowerCase().includes(term)
+          || pipe.transform(record.ngaytao).includes(term)
+          || pipe.transform(record.hinhthucthanhtoan).includes(term);
+    });
+  }
   
 }
