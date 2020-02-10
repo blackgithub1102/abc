@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <!-- Header -->
+    <app-app-header></app-app-header>
+    <!-- End of Header -->
+
+    <!-- Toolbar -->
+    <app-app-toolbar></app-app-toolbar>
+    <!-- End of Toolbar -->
+
+    <!-- Tabsbar -->
+    
+    <!-- End of tabbar -->
+
+    <!-- Content -->
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ngày gởi</th>
+          <th scope="col">Người đề nghị</th>
+          <th scope="col">Hình thức thanh toán</th>
+          <th scope="col">Bên nhận</th>
+          <th scope="col">Đơn vị phê duyệt</th>
+          <th scope="col">Kỳ ngân sách</th>
+          <th scope="col">Tư cách pháp nhân</th>
+          <th scope="col">Thời hạn thanh toán</th>
+          <th scope="col">Ghi chú</th>
+          <th scope="col">Cc mail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of items; index as i">
+          <th scope="row"></th>
+          <td>{{ item.ngaytao}}</td>
+          <td>{{ item.nguoitao}}</td>
+          <td>{{ item.hinhthucthanhtoan}}</td>
+          <td>{{ item.bennhan}}</td>
+          <td>{{ item.donvipheduyet}}</td>
+          <td>{{ item.kyngansach}}</td>
+          <td>{{ item.tucachphapnhan}}</td>
+          <td></td>
+          <td>{{ item.ghichu}}</td>
+          <td>{{ item.ccmail }}</td>
+        </tr>
+        </tbody>
+      </table>
+    <!-- End of Content -->
+
+    <!-- Footer -->
+    <!-- End of Footer -->
+</div>

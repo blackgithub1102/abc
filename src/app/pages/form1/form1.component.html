@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <!-- Header -->
+    <app-app-header></app-app-header>
+    <!-- End of Header -->
+
+    <!-- Toolbar -->
+    <app-app-toolbar></app-app-toolbar>
+    <!-- End of Toolbar -->
+
+    <!-- Tabsbar -->
+    <div class="tabsbar">
+        <div class="tabsbar-title">TẠO ĐỀ NGHỊ</div>
+        <div class="tabsbar-bar">
+            <ul class="nav nav-pills">
+                <li class="nav-item col-4 tabsbar-li">
+                  <button class="nav-link active btn btn-block" href="#">Thanh toán</button>
+                </li>
+                <li class="nav-item col-4 tabsbar-li">
+                  <button class="nav-link btn btn-block" href="#">Thanh toán trả trước</button>
+                </li>
+                <li class="nav-item col-4 tabsbar-li">
+                  <button class="nav-link btn btn-block" href="#">Tạm ứng</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End of tabbar -->
+
+    <!-- Content -->
+    <div class="content">
+        <div class="row row-cols-4">
+            <div class="col content-row-col">
+                <div>Ngày gởi: {{ngaytao}}</div>
+                <input [(ngModel)]="ngaytao" type="date" class="form-control" required>
+            </div>
+            <div class="col content-row-col">
+                <div>Người tạo đề nghị: {{nguoitao}}<span>*</span></div>
+                <input [(ngModel)]="nguoitao" type="text" class="form-control" required>
+            </div>
+            <div class="col content-row-col">
+                <div>Hình thức thanh toán:<span>*</span></div>
+                <select [(ngModel)]="hinhthucthanhtoan" class="custom-select" id="inputGroupSelect01" required>
+                    <option selected>Vui lòng chọn</option>
+                    <option value="Tiền mặt">Tiền mặt</option>
+                    <option value="Chuyển khoản">Chuyển khoản</option>
+                    <option value="Khác">Khác</option>
+                </select>
+            </div>
+            <div class="col content-row-col">
+                <div>Bên nhận:<span>*</span></div>
+                <input [(ngModel)]="bennhan" type="text" class="form-control" required>
+            </div>
+            <div class="col content-row-col">
+                <div>Đơn vị phê duyệt:<span>*</span></div>
+                <select [(ngModel)]="donvipheduyet" class="custom-select" id="inputGroupSelect01" required>
+                    <option selected>Vui lòng chọn</option>
+                    <option value="ERP">ERP</option>
+                    <option value="FIS">FIS</option>
+                    <option value="FPT">FPT</option>
+                </select>
+            </div>
+            <div class="col content-row-col">
+                <div>Kỳ ngân sách:<span>*</span></div>
+                <select [(ngModel)]="kyngansach" class="custom-select" id="inputGroupSelect01" required>
+                    <option selected>Vui lòng chọn</option>
+                    <option value="02-2020">02-2020</option>
+                    <option value="03-2020">03-2020</option>
+                </select>
+            </div>
+            <div class="col content-row-col">
+                <div>Tư cách pháp nhân:<span>*</span></div>
+                <input type="text" class="form-control" disabled>
+            </div>
+            <div class="col content-row-col">
+                <div>Thời hạn thanh toán:<span>*</span></div>
+                <input [(ngModel)]="thoihanthanhtoan" type="date" class="form-control" required>
+            </div>
+            <div class="col-6 content-row-col">
+                <div>Diễn giải chi phí: {{ghichu}}<span>*</span></div>
+                <textarea [(ngModel)]="ghichu" class="form-control"></textarea>
+            </div>
+            <div class="col-6 content-row-col">
+                <div>CC EMAIL (Cách nhau bởi dấu ;):</div>
+                <input [(ngModel)]="ccmail" type="text" class="form-control">
+            </div>
+            <div class="col">
+                <button type="submit" (click)="onSave()" class="btn btn-lg btn-primary">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+    <!-- End of Content -->
+
+    <!-- Footer -->
+    <!-- End of Footer -->
+</div>

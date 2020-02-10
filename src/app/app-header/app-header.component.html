@@ -1,0 +1,18 @@
+<div class="header">
+    <div class="row">
+        <img src="../assets/img/logo.png" width="60px" height="40px">
+        <div class="col" id="logo">
+            <h4 class="header-h4">Hệ thống quản lý thanh toán</h4>
+        </div>
+        <div class="col">
+            <div ngbDropdown class="d-inline-block" style="float: right;">
+                <button class="btn btn-outline-info btn-sm" ngbDropdownToggle
+                    style="border-radius: 20px;">email@fis.com.vn</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Edit profile</button>
+                    <button ngbDropdownItem (click)="onLogout()">Log out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

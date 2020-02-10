@@ -1,0 +1,27 @@
+.content-row-col{
+    margin-bottom: 20px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+span{
+    color: red;
+}
+.tabsbar{
+    margin-bottom: 20px;
+}
+.tabsbar-title{
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(0, 110, 255);
+}
+.tabsbar-bar{
+    border-top: 2px solid grey;
+    padding-top: 8px;
+    border-bottom: 1px solid rgb(0, 110, 255);
+}
+

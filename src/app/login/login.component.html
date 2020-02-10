@@ -1,0 +1,13 @@
+<div class="text-center">
+    <div class="login-form">
+        <img src="../../assets/img/logo.png">
+        <h1>SIGN IN</h1>
+        <div class="form-inp">
+            <input class="form-control" placeholder="Email: E.g email@.fis.com" type="text" [(ngModel)]="username">
+            <input class="form-control" placeholder="Password" type="password" [(ngModel)]="password">
+        </div>
+        <br>
+        <button (click)="onSubmit()" class="btn btn-primary btn-lg">Sign in</button>
+        <div>If you not have account, <a [routerLink]="['register']">Register</a> now.</div>
+    </div>
+</div>

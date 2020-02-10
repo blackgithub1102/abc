@@ -1,0 +1,22 @@
+<div class="toolbar">
+    <div class="row">
+        <button [routerLink]="['homepage']" class="toolbar-btn">Trang chủ</button>
+        <div ngbDropdown class="d-inline-block">
+            <button class="toolbar-btn" ngbDropdownToggle>Biểu mẫu</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button [routerLink]="['form']" ngbDropdownItem>Biểu mẫu 1</button>
+                <button ngbDropdownItem>Another Action</button>
+                <button ngbDropdownItem>Something else is here</button>
+            </div>
+        </div>
+        <div ngbDropdown class="d-inline-block">
+            <button class="toolbar-btn" ngbDropdownToggle>Kiểm tra</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>Action - 1</button>
+                <button ngbDropdownItem>Another Action</button>
+                <button ngbDropdownItem>Something else is here</button>
+            </div>
+        </div>
+        <button class="toolbar-btn">Trợ giúp</button>
+    </div>
+</div>

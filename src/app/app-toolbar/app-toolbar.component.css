@@ -1,0 +1,13 @@
+.toolbar{
+    background-color: rgb(0, 110, 255);;
+}
+.toolbar-btn{
+    background-color: rgb(0, 110, 255);;
+    color: white;
+    border: rgb(0, 110, 255);
+    padding: 10px;
+}
+.toolbar-btn:hover{
+    background-color: skyblue;
+    border: rgb(0, 110, 255);;
+}
