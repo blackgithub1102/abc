@@ -52,7 +52,10 @@ export class Form1Component implements OnInit {
           thoihanthanhtoan: this.thoihanthanhtoan,
           ccmail: this.ccmail
         })
-        .then(docRef => this.router.navigate(['home']))
+        .then(docRef => {
+          alert("Sucess");
+          this.router.navigate(['homepage']);
+        })
         .catch(error => console.log(error));
     }
   }

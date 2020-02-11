@@ -1,87 +1,101 @@
 <div class="container-fluid">
-    <!-- Header -->
-    <app-app-header></app-app-header>
-    <!-- End of Header -->
+  <!-- Header -->
+  <app-app-header></app-app-header>
+  <!-- End of Header -->
 
-    <!-- Toolbar -->
-    <app-app-toolbar></app-app-toolbar>
-    <!-- End of Toolbar -->
+  <!-- Toolbar -->
+  <app-app-toolbar></app-app-toolbar>
+  <!-- End of Toolbar -->
 
-    <!-- Tabsbar -->
-    
-    <!-- End of tabbar -->
+  <!-- Tabsbar -->
 
-    <!-- Content -->
-    <form>
-      <div class="form-group form-inline">
-          Full text search: <input [formControl]="filter">
-      </div>
-    </form>
+  <!-- End of tabbar -->
 
-    <div>
-      <div class="row">
-        <div class="col-2">Search</div>
-        <div class="col-5">
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-5">
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Vui lòng chọn</option>
-            <option value="Tiền mặt">Ngay goi</option>
-            <option value="Chuyển khoản">Nguoi goi</option>
-            <option value="Khác">Hinh thuc thanh toan</option>
-          </select> 
-        </div>
-      </div>
-    </div>
-
+  <!-- Content -->
+  <form>
     <div class="row">
-      <div class="col-2">Search</div>
-      <div class="col-5"><input type="text" class="form-control"></div>
-      <div class="row-col-3">
-        <input type="checkbox" name="vehicle1" value="Bike">
-        <label for="vehicle1">Ngay tao</label>
-        <input type="checkbox" name="vehicle1" value="Bike">
-        <label for="vehicle1">Ngay tao</label>
-        <input type="checkbox" name="vehicle1" value="Bike">
-        <label for="vehicle1">Ngay tao</label>
+      <div class="col-2">Search any:</div>
+      <div class="col-5">
+        <input class="form-control" id="myInput" [formControl]="filter" (keyup)="searchBar()">
       </div>
     </div>
+  </form>
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Ngày gởi</th>
-          <th scope="col">Người đề nghị</th>
-          <th scope="col">Hình thức thanh toán</th>
-          <th scope="col">Bên nhận</th>
-          <th scope="col">Đơn vị phê duyệt</th>
-          <th scope="col">Kỳ ngân sách</th>
-          <th scope="col">Tư cách pháp nhân</th>
-          <th scope="col">Thời hạn thanh toán</th>
-          <th scope="col">Ghi chú</th>
-          <th scope="col">Cc mail</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let item of items ; index as i">
-          <th scope="row">{{ i + 1 }}</th>
-          <td><ngb-highlight [result]="item.ngaytao" [term]="filter.value"></ngb-highlight></td>
-          <td>{{ item.nguoitao}}</td>
-          <td>{{ item.hinhthucthanhtoan}}</td>
-          <td>{{ item.bennhan}}</td>
-          <td>{{ item.donvipheduyet}}</td>
-          <td>{{ item.kyngansach}}</td>
-          <td>{{ item.tucachphapnhan}}</td>
-          <td>{{ item.thoihanthanhtoan}}</td>
-          <td>{{ item.ghichu}}</td>
-          <td>{{ item.ccmail }}</td>
-        </tr>
-        </tbody>
-      </table>
-    <!-- End of Content -->
+  <div>
+    <div class="row">
+      <div class="col-2">Search by:</div>
+      <div class="col-5">
+        <input class="form-control" id="myInput2" [formControl]="filter" (keyup)="searchBy(select_search)">
+      </div>
+      <div class="col-5">
+        <select [(ngModel)]="select_search" class="custom-select" id="inputGroupSelect01">
+          <option selected value="0">Ngày gởi</option>
+          <option value="1">Người gởi</option>
+          <option value="3">Người nhận</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
-    <!-- Footer -->
-    <!-- End of Footer -->
+  <div class="row">
+    <div class="col-2">Search multi:</div>
+    <div class="col-5"><input class="form-control" id="myInput3" [formControl]="filter" (keyup)="searchMulti()"></div>
+    <div class="col-5 row row-cols-3">
+      <div class="col">
+        <input type="checkbox" value="0" id="c1" value="Bike">
+        <label for="vehicle1">Ngày tạo</label>
+      </div>
+      <div class="col">
+        <input type="checkbox" value="1" id="c2" value="Bike">
+        <label for="vehicle1">Người tạo</label>
+      </div>
+      <div class="col">
+        <input type="checkbox" value="3" id="c3" value="Bike">
+        <label for="vehicle1">Người nhận</label>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped" id="myTable">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ngày gởi</th>
+        <th scope="col">Người đề nghị</th>
+        <th scope="col">Hình thức thanh toán</th>
+        <th scope="col">Bên nhận</th>
+        <th scope="col">Đơn vị phê duyệt</th>
+        <th scope="col">Kỳ ngân sách</th>
+        <th scope="col">Tư cách pháp nhân</th>
+        <th scope="col">Thời hạn thanh toán</th>
+        <th scope="col">Ghi chú</th>
+        <th scope="col">Cc mail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <ngb-highlight [result]="item.ngaytao |date " [term]="filter.value"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="item.nguoitao" [term]="filter.value"></ngb-highlight>
+        </td>
+        <td>{{ item.hinhthucthanhtoan }}</td>
+        <td>
+          <ngb-highlight [result]="item.bennhan" [term]="filter.value"></ngb-highlight>
+        </td>
+        <td>{{ item.donvipheduyet}}</td>
+        <td>{{ item.kyngansach}}</td>
+        <td>{{ item.tucachphapnhan}}</td>
+        <td>{{ item.thoihanthanhtoan}}</td>
+        <td>{{ item.ghichu}}</td>
+        <td>{{ item.ccmail }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- End of Content -->
+
+  <!-- Footer -->
+  <!-- End of Footer -->
 </div>
